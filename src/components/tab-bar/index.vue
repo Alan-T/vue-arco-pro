@@ -1,59 +1,58 @@
 <template>
   <div class="tab-bar-container">
-    <a-affix ref="affixRef" :offset-top="offsetTop">
-      <div class="tab-bar-box">
-        <div class="tab-bar-scroll">
-          <div class="tags-wrap">
-            <span
-              v-for="(tag, index) in tagList"
-              :key="tag.fullPath"
-              class="arco-tag arco-tag-size-medium arco-tag-checked"
-              :class="{ 'link-actived': tag.fullPath === $route.fullPath }"
-              @click="goto(tag)"
-            >
-              <span class="tag-link">
-                {{ $t(tag.title) }}
-              </span>
-              <span
-                class="arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn"
-                @click.stop="tagClose(tag, index)"
-              >
-                <icon-close />
-              </span>
+    <div class="tab-bar-box">
+      <div class="tab-bar-scroll">
+        <div ref="tagsRef" class="tags-wrap" :style="offsetStyle">
+          <span
+            v-for="(tag, index) in tagList"
+            :key="tag.fullPath"
+            class="arco-tag arco-tag-size-medium arco-tag-checked"
+            :class="{ 'link-actived': tag.fullPath === $route.fullPath }"
+            @click="goto(tag)"
+          >
+            <span class="tag-link">
+              {{ $t(tag.title) }}
             </span>
-          </div>
+            <span
+              class="arco-icon-hover arco-tag-icon-hover arco-icon-hover-size-medium arco-tag-close-btn"
+              @click.stop="tagClose(tag, index)"
+            >
+              <icon-close />
+            </span>
+          </span>
         </div>
       </div>
-    </a-affix>
+    </div>
+    <div class="action"
+      ><icon-left @click="onleft" /><icon-right @click="onRight" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, watch } from 'vue';
+  import { ref, computed, reactive } from 'vue';
   import { useRouter } from 'vue-router';
   import type { RouteLocationNormalized } from 'vue-router';
   import { listenerRouteChange } from '@/utils/route-listener';
-  import { useAppStore, useTabBarStore } from '@/store';
+  import { useTabBarStore } from '@/store';
   import type { TagProps } from '@/store/modules/tab-bar/types';
 
-  const appStore = useAppStore();
   const tabBarStore = useTabBarStore();
 
+  const data = reactive({
+    offset: 0,
+  });
+
+  const offsetStyle = computed(() => {
+    return `transform:translateX(${data.offset}px)`;
+  });
+
   const router = useRouter();
-  const affixRef = ref();
+  const tagsRef = ref();
   const tagList = computed(() => {
     return tabBarStore.getTabList;
   });
-  const offsetTop = computed(() => {
-    return appStore.navbar ? 27 : 0;
-  });
 
-  watch(
-    () => appStore.navbar,
-    () => {
-      affixRef.value.updatePosition();
-    }
-  );
   listenerRouteChange((route: RouteLocationNormalized) => {
     if (
       !route.meta.noAffix &&
@@ -72,25 +71,40 @@
   const goto = (tag: TagProps) => {
     router.push({ ...tag });
   };
+  const onleft = () => {
+    if (data.offset + 68 > 0) {
+      data.offset = 0;
+    } else {
+      data.offset += 68;
+    }
+  };
+  const onRight = () => {
+    const maxOffset = tagsRef.value.scrollWidth - tagsRef.value.clientWidth;
+    if (data.offset - 68 + maxOffset > 0) {
+      data.offset -= 68;
+    } else {
+      data.offset = -maxOffset;
+    }
+  };
 </script>
 
 <style scoped lang="less">
   .tab-bar-container {
     position: relative;
+    display: flex;
     background-color: var(--color-bg-2);
+    margin-top: 27px;
     .tab-bar-box {
+      flex-grow: 1;
       display: flex;
       background-color: var(--color-bg-2);
-      // border-bottom: 1px solid var(--color-border);
       .tab-bar-scroll {
+        width: calc(100vw - 580px);
+        overflow-x: hidden;
         height: 32px;
         flex: 1;
-        overflow: hidden;
         .tags-wrap {
-          // padding: 4px 0;
-          // height: 42px;
           white-space: nowrap;
-          overflow-x: auto;
 
           :deep(.arco-tag) {
             margin-right: 6px;
@@ -103,6 +117,15 @@
           }
         }
       }
+    }
+
+    .action {
+      width: 40px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 

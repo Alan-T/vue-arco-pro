@@ -235,7 +235,6 @@
 <style scoped lang="less">
   .navbar {
     display: flex;
-    justify-content: space-between;
     height: 100%;
     background-color: var(--color-bg-2);
     border-bottom: 1px solid var(--color-border);
@@ -251,6 +250,7 @@
 
   .mid-side {
     flex-grow: 1;
+    flex-shrink: 1;
   }
 
   .right-side {
