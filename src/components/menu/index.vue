@@ -86,7 +86,7 @@
       };
       listenerRouteChange((newRoute) => {
         if (newRoute.meta.requiresAuth && !newRoute.meta.hideInMenu) {
-          const key = newRoute.matched[2]?.name as string;
+          const key = newRoute.name as string;
           selectedKey.value = [key];
         }
       }, true);
@@ -96,14 +96,11 @@
       };
 
       const renderSubMenu = () => {
-        function travel(_route: RouteRecordRaw[], nodes = []) {
-          if (_route) {
-            _route.forEach((element) => {
-              // This is demo, modify nodes as needed
-              const icon = element?.meta?.icon
-                ? `<${element?.meta?.icon}/>`
-                : ``;
-              const r = element?.children ? (
+        function loopMenu(_route: RouteRecordRaw[]) {
+          return _route.map((element) => {
+            const icon = element?.meta?.icon ? `<${element?.meta?.icon}/>` : '';
+            if (element.children) {
+              return (
                 <a-sub-menu
                   key={element?.name}
                   v-slots={{
@@ -111,35 +108,33 @@
                     title: () => h(compile(t(element?.meta?.locale || ''))),
                   }}
                 >
-                  {element?.children?.map((elem) => {
-                    return (
-                      <a-menu-item key={elem.name} onClick={() => goto(elem)}>
-                        {t(elem?.meta?.locale || '')}
-                        {travel(elem.children ?? [])}
-                      </a-menu-item>
-                    );
-                  })}
+                  {loopMenu(element.children ?? [])}
                 </a-sub-menu>
-              ) : (
-                <a-menu-item
-                  key={element.name}
-                  onClick={() => goto(element)}
-                  v-slots={{
-                    icon: () => h(compile(icon)),
-                    title: () => h(compile(t(element?.meta?.locale || ''))),
-                  }}
-                >
-                  {t(element?.meta?.locale || '')}
-                  {travel(element.children ?? [])}
-                </a-menu-item>
               );
-              nodes.push(r as never);
-            });
-          }
-          return nodes;
+            }
+            return (
+              <a-menu-item
+                key={element.name}
+                onClick={() => goto(element)}
+                v-slots={
+                  icon !== ''
+                    ? {
+                        icon: () => h(compile(icon)),
+                        title: () => h(compile(t(element?.meta?.locale || ''))),
+                      }
+                    : {
+                        title: () => h(compile(t(element?.meta?.locale || ''))),
+                      }
+                }
+              >
+                {t(element?.meta?.locale || '')}
+              </a-menu-item>
+            );
+          });
         }
-        return travel(menuTree.value);
+        return loopMenu(menuTree.value);
       };
+
       return () => (
         <a-menu
           v-model:collapsed={collapsed.value}
