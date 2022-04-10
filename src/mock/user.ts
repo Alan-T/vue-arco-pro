@@ -38,6 +38,118 @@ setupMock({
       return failResponseWrap(null, '未登录', 50008);
     });
 
+    // 用户菜单
+    Mock.mock(new RegExp('/api/user/route'), () => {
+      if (isLogin()) {
+        return successResponseWrap([
+          {
+            path: 'dashboard',
+            name: 'dashboard',
+            component: '/dashboard/index',
+            meta: {
+              locale: 'menu.dashboard',
+              requiresAuth: true,
+              icon: 'icon-dashboard',
+              order: 0,
+            },
+            children: [
+              {
+                path: 'workplace',
+                name: 'Workplace',
+                component: '/dashboard/workplace/index',
+                meta: {
+                  locale: 'menu.dashboard.workplace',
+                  requiresAuth: true,
+                  roles: ['*'],
+                },
+              },
+            ],
+          },
+          {
+            path: 'home',
+            name: 'home',
+            component: '/home/index',
+            meta: {
+              locale: '首页',
+              requiresAuth: true,
+              icon: 'icon-home',
+              roles: ['*'],
+              order: 1,
+            },
+          },
+          {
+            path: 'settings',
+            name: 'settings',
+            component: '/settings/index',
+            meta: {
+              locale: '设置中心',
+              requiresAuth: true,
+              icon: 'icon-settings',
+              order: 2,
+            },
+            children: [
+              {
+                path: 'personal',
+                name: 'personal',
+                component: '/settings/personal/index',
+                meta: {
+                  locale: '个人信息',
+                  requiresAuth: true,
+                  roles: ['*'],
+                },
+              },
+            ],
+          },
+          {
+            path: 'system',
+            name: 'system',
+            component: '/system/index',
+            meta: {
+              locale: '系统设置',
+              requiresAuth: true,
+              icon: 'icon-settings',
+              order: 3,
+            },
+            children: [
+              {
+                path: 'user',
+                name: 'user',
+                component: '/system/user/index',
+                meta: {
+                  locale: '用户信息',
+                  requiresAuth: true,
+                  roles: ['*'],
+                },
+              },
+              {
+                path: 'log',
+                name: 'log',
+                component: '/system/log/index',
+                meta: {
+                  locale: '日志',
+                  requiresAuth: true,
+                  roles: ['*'],
+                },
+                children: [
+                  {
+                    path: 'apilog',
+                    name: 'apilog',
+                    component: '/system/log/api/index',
+                    meta: {
+                      locale: 'api日志',
+                      requiresAuth: true,
+                      roles: ['*'],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        ]);
+      }
+      return failResponseWrap(null, '未登录', 50008);
+    });
+
     // 登录
     Mock.mock(new RegExp('/api/user/login'), (params: MockParams) => {
       const { username, password } = JSON.parse(params.body);

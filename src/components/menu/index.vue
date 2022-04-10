@@ -2,7 +2,7 @@
   import { defineComponent, ref, h, compile, computed } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
-  import { useAppStore } from '@/store';
+  import { useAppStore, useMemuStore } from '@/store';
   import usePermission from '@/hooks/permission';
   import { listenerRouteChange } from '@/utils/route-listener';
 
@@ -11,6 +11,7 @@
     setup() {
       const { t } = useI18n();
       const appStore = useAppStore();
+      const menuSrore = useMemuStore();
       const permission = usePermission();
       const router = useRouter();
       const collapsed = computed({
@@ -22,13 +23,14 @@
           appStore.updateSettings({ menuCollapse: value });
         },
       });
-      const appRoute = computed(() => {
-        return router
-          .getRoutes()
-          .find((el) => el.name === 'root') as RouteRecordNormalized;
-      });
+      const appRoute = menuSrore.routeList;
+      // const appRoute = computed(() => {
+      //   return router
+      //     .getRoutes()
+      //     .find((el) => el.name === 'root') as RouteRecordNormalized;
+      // });
       const menuTree = computed(() => {
-        const copyRouter = JSON.parse(JSON.stringify(appRoute.value.children));
+        const copyRouter = JSON.parse(JSON.stringify(appRoute));
         copyRouter.sort(
           (a: RouteRecordNormalized, b: RouteRecordNormalized) => {
             return (a.meta.order || 0) - (b.meta.order || 0);

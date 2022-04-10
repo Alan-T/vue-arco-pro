@@ -3,8 +3,6 @@ import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css';
 
 import DefaultLayout from '@/layout/default-layout.vue';
-import Login from './routes/modules/login';
-import appRoutes from './routes';
 import createRouteGuard from './guard';
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
@@ -16,12 +14,18 @@ const router = createRouter({
       path: '/',
       redirect: 'login',
     },
-    Login,
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/index.vue'),
+      meta: {
+        requiresAuth: false,
+      },
+    },
     {
       name: 'root',
       path: '/',
       component: DefaultLayout,
-      children: appRoutes,
     },
     {
       path: '/:pathMatch(.*)*',

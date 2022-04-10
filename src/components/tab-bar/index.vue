@@ -23,8 +23,9 @@
         </div>
       </div>
     </div>
-    <div class="action"
-      ><icon-left @click="onleft" /><icon-right @click="onRight" />
+    <div class="action">
+      <div class="translate-btn"><icon-left @click="onleft" /></div>
+      <div class="translate-btn"><icon-right @click="onRight" /></div>
     </div>
   </div>
 </template>
@@ -38,7 +39,7 @@
   import type { TagProps } from '@/store/modules/tab-bar/types';
 
   const tabBarStore = useTabBarStore();
-
+  const tagsRef = ref();
   const data = reactive({
     offset: 0,
   });
@@ -48,7 +49,7 @@
   });
 
   const router = useRouter();
-  const tagsRef = ref();
+
   const tagList = computed(() => {
     return tabBarStore.getTabList;
   });
@@ -126,6 +127,17 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
+      .translate-btn {
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        &:hover {
+          background-color: rgb(242 243 245);
+        }
+      }
     }
   }
 
