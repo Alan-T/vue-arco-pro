@@ -23,14 +23,9 @@
           appStore.updateSettings({ menuCollapse: value });
         },
       });
-      const appRoute = menuSrore.routeList;
-      // const appRoute = computed(() => {
-      //   return router
-      //     .getRoutes()
-      //     .find((el) => el.name === 'root') as RouteRecordNormalized;
-      // });
+
       const menuTree = computed(() => {
-        const copyRouter = JSON.parse(JSON.stringify(appRoute));
+        const copyRouter = JSON.parse(JSON.stringify(menuSrore.routeList));
         copyRouter.sort(
           (a: RouteRecordNormalized, b: RouteRecordNormalized) => {
             return (a.meta.order || 0) - (b.meta.order || 0);

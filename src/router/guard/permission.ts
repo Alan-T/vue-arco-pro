@@ -36,7 +36,13 @@ export default function setupPermissionGuard(router: Router) {
             name: 'root',
             path: '/',
             component: () => import('@/layout/default-layout.vue'),
-            children: formatRoute(useMenu.routeList),
+            children: [
+              {
+                path: '/',
+                redirect: 'home',
+              },
+              ...formatRoute(useMenu.routeList),
+            ],
           });
           // 添加动态路由
           if (router.getRoutes().find((item) => item.name === to.name)) {
