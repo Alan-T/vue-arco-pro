@@ -241,7 +241,6 @@
   }
 
   .left-side {
-    flex-shrink: 0;
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -249,8 +248,8 @@
   }
 
   .mid-side {
-    flex-grow: 1;
-    flex-shrink: 1;
+    flex: 1;
+    width: 0;
   }
 
   .right-side {

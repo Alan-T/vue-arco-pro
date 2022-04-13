@@ -9,7 +9,7 @@ const useMenuStore = defineStore('menu', {
   getters: {},
 
   actions: {
-    async getUserInfo() {
+    async getRoutesInfo() {
       const res = await getRoutesInfo();
 
       this.routeList = res.data as unknown as RouteRecordRaw[];

@@ -47,7 +47,7 @@ setupMock({
             name: 'dashboard',
             component: '/dashboard/index',
             meta: {
-              locale: 'menu.dashboard',
+              locale: '仪表盘',
               requiresAuth: true,
               icon: 'icon-dashboard',
               order: 0,
@@ -58,7 +58,7 @@ setupMock({
                 name: 'Workplace',
                 component: '/dashboard/workplace/index',
                 meta: {
-                  locale: 'menu.dashboard.workplace',
+                  locale: '工作台',
                   requiresAuth: true,
                   roles: ['*'],
                 },

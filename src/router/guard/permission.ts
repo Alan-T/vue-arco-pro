@@ -31,7 +31,7 @@ export default function setupPermissionGuard(router: Router) {
       } else {
         try {
           await userStore.getUserInfo();
-          await useMenu.getUserInfo();
+          await useMenu.getRoutesInfo();
           router.addRoute({
             name: 'root',
             path: '/',
