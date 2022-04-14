@@ -43,27 +43,16 @@ setupMock({
       if (isLogin()) {
         return successResponseWrap([
           {
-            path: 'dashboard',
-            name: 'dashboard',
-            component: '/dashboard/index',
+            path: 'workplace',
+            name: 'workplace',
+            component: '/workplace/index',
             meta: {
-              locale: '仪表盘',
+              locale: '工作台',
               requiresAuth: true,
               icon: 'icon-dashboard',
+              roles: ['*'],
               order: 0,
             },
-            children: [
-              {
-                path: 'workplace',
-                name: 'Workplace',
-                component: '/dashboard/workplace/index',
-                meta: {
-                  locale: '工作台',
-                  requiresAuth: true,
-                  roles: ['*'],
-                },
-              },
-            ],
           },
           {
             path: 'home',

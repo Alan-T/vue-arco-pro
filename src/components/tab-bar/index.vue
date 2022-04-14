@@ -20,12 +20,11 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, reactive } from 'vue';
+  import { ref, computed } from 'vue';
   import { useRouter } from 'vue-router';
   import type { RouteLocationNormalized } from 'vue-router';
   import { listenerRouteChange } from '@/utils/route-listener';
   import { useTabBarStore } from '@/store';
-  import type { TagProps } from '@/store/modules/tab-bar/types';
 
   const tabBarStore = useTabBarStore();
   const activedTab = ref('home');
