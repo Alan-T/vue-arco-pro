@@ -1,6 +1,5 @@
 <script lang="tsx">
   import { defineComponent, ref, h, compile, computed } from 'vue';
-  import { useI18n } from 'vue-i18n';
   import { useRouter, RouteRecordRaw, RouteRecordNormalized } from 'vue-router';
   import { useAppStore, useMemuStore } from '@/store';
   import usePermission from '@/hooks/permission';
@@ -9,7 +8,6 @@
   export default defineComponent({
     emit: ['collapse'],
     setup() {
-      const { t } = useI18n();
       const appStore = useAppStore();
       const menuSrore = useMemuStore();
       const permission = usePermission();
@@ -102,7 +100,7 @@
                   key={element?.name}
                   v-slots={{
                     icon: () => h(compile(icon)),
-                    title: () => h(compile(t(element?.meta?.locale || ''))),
+                    title: () => h(compile(element?.meta?.locale || '')),
                   }}
                 >
                   {loopMenu(element.children ?? [])}
@@ -117,14 +115,14 @@
                   icon !== ''
                     ? {
                         icon: () => h(compile(icon)),
-                        title: () => h(compile(t(element?.meta?.locale || ''))),
+                        title: () => h(compile(element?.meta?.locale || '')),
                       }
                     : {
-                        title: () => h(compile(t(element?.meta?.locale || ''))),
+                        title: () => h(compile(element?.meta?.locale || '')),
                       }
                 }
               >
-                {t(element?.meta?.locale || '')}
+                {element?.meta?.locale || ''}
               </a-menu-item>
             );
           });

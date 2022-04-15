@@ -27,7 +27,7 @@
   import { useTabBarStore } from '@/store';
 
   const tabBarStore = useTabBarStore();
-  const activedTab = ref('home');
+  const activedTab = ref('workpalce');
 
   const router = useRouter();
 

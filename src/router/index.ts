@@ -22,6 +22,20 @@ const router = createRouter({
       name: 'root',
       path: '/',
       component: DefaultLayout,
+      children: [
+        {
+          path: 'workplace',
+          name: 'workplace',
+          component: () => import('@/views/workplace/index.vue'),
+          meta: {
+            locale: '工作台',
+            requiresAuth: true,
+            icon: 'icon-dashboard',
+            roles: ['*'],
+            order: 0,
+          },
+        },
+      ],
     },
     {
       path: '/:pathMatch(.*)*',

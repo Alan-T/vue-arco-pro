@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia';
 import { getRoutesInfo } from '@/api/menu';
-import type { RouteRecordRaw } from 'vue-router';
-import { MenuState } from './types';
+import { MenuState, RouteRecord } from './types';
 
 const useMenuStore = defineStore('menu', {
-  state: (): MenuState => ({ routeList: [] }),
+  state: (): MenuState => ({
+    routeList: [],
+  }),
 
   getters: {},
 
@@ -12,7 +13,21 @@ const useMenuStore = defineStore('menu', {
     async getRoutesInfo() {
       const res = await getRoutesInfo();
 
-      this.routeList = res.data as unknown as RouteRecordRaw[];
+      this.routeList = [
+        {
+          path: 'workplace',
+          name: 'workplace',
+          component: '/workplace/index',
+          meta: {
+            locale: '工作台',
+            requiresAuth: true,
+            icon: 'icon-dashboard',
+            roles: ['*'],
+            order: 0,
+          },
+        },
+        ...(res.data as unknown as RouteRecord[]),
+      ];
     },
   },
 });

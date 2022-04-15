@@ -16,7 +16,7 @@ setupMock({
       if (isLogin()) {
         const role = window.localStorage.getItem('userRole') || 'admin';
         return successResponseWrap({
-          name: '王立群',
+          name: 'Alan',
           avatar:
             '//lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png',
           email: 'wangliqun@email.com',
@@ -42,18 +42,6 @@ setupMock({
     Mock.mock(new RegExp('/api/user/route'), () => {
       if (isLogin()) {
         return successResponseWrap([
-          {
-            path: 'workplace',
-            name: 'workplace',
-            component: '/workplace/index',
-            meta: {
-              locale: '工作台',
-              requiresAuth: true,
-              icon: 'icon-dashboard',
-              roles: ['*'],
-              order: 0,
-            },
-          },
           {
             path: 'home',
             name: 'home',

@@ -39,7 +39,7 @@ export default function setupPermissionGuard(router: Router) {
             children: [
               {
                 path: '/',
-                redirect: 'home',
+                redirect: 'workplace',
               },
               ...formatRoute(useMenu.routeList),
             ],
