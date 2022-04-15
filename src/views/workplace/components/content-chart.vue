@@ -6,10 +6,10 @@
       :body-style="{
         paddingTop: '20px',
       }"
-      :title="$t('workplace.contentData')"
+      title="内容数据"
     >
       <template #extra>
-        <a-link>{{ $t('workplace.viewMore') }}</a-link>
+        <a-link>{{ '查看更多' }}</a-link>
       </template>
       <Chart height="289px" :option="chartOption" />
     </a-card>

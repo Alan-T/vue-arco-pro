@@ -6,10 +6,10 @@
       :body-style="{ padding: '17px 20px 21px 20px' }"
     >
       <template #title>
-        {{ $t('workplace.popularContent') }}
+        {{ '线上热门内容'}}
       </template>
       <template #extra>
-        <a-link>{{ $t('workplace.viewMore') }}</a-link>
+        <a-link>{{ '查看更多'}}</a-link>
       </template>
       <a-space direction="vertical" :size="10" fill>
         <a-radio-group
@@ -18,13 +18,13 @@
           @change="typeChange"
         >
           <a-radio value="text">
-            {{ $t('workplace.popularContent.text') }}
+            {{ '文本' }}
           </a-radio>
           <a-radio value="image">
-            {{ $t('workplace.popularContent.image') }}
+            {{ '图片' }}
           </a-radio>
           <a-radio value="video">
-            {{ $t('workplace.popularContent.video') }}
+            {{ '视频' }}
           </a-radio>
         </a-radio-group>
         <a-table
