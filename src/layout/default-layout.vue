@@ -79,8 +79,7 @@
       renderMenu.value && !hideMenu.value
         ? { paddingLeft: `${menuWidth.value}px` }
         : {};
-    const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
-    return { ...paddingLeft, ...paddingTop };
+    return { ...paddingLeft };
   });
   const setCollapsed = (val: boolean) => {
     appStore.updateSettings({ menuCollapse: val });
@@ -111,9 +110,6 @@
   }
 
   .layout-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
     z-index: 100;
     width: 100%;
     height: @nav-size-height;
@@ -166,8 +162,8 @@
   }
 
   .layout-content {
-    min-height: 100vh;
-    overflow-y: hidden;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
     background-color: var(--color-fill-2);
     transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
   }

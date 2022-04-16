@@ -39,20 +39,6 @@
         </a-tooltip>
       </li>
       <li>
-        <a-tooltip content="设置">
-          <a-button
-            class="nav-btn"
-            type="outline"
-            :shape="'circle'"
-            @click="setVisible"
-          >
-            <template #icon>
-              <icon-settings />
-            </template>
-          </a-button>
-        </a-tooltip>
-      </li>
-      <li>
         <a-dropdown trigger="click">
           <a-avatar
             :size="32"
@@ -132,9 +118,6 @@
     },
   });
   const toggleTheme = useToggle(isDark);
-  const setVisible = () => {
-    appStore.updateSettings({ globalSettings: true });
-  };
 
   const handleLogout = () => {
     logout();
