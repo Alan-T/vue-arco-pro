@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="left-side">
+    <div class="left-side" :style="{ width: menuWidth + 'px' }">
       <a-space>
         <img
           alt="logo"
@@ -12,11 +12,6 @@
         >
           Alan Demo
         </a-typography-title>
-        <icon-menu-fold
-          v-if="appStore.device === 'mobile'"
-          style="font-size: 22px; cursor: pointer"
-          @click="toggleDrawerMenu"
-        />
       </a-space>
     </div>
     <div class="mid-side">
@@ -57,18 +52,10 @@
               </a-space>
             </a-doption>
             <a-doption>
-              <a-space @click="$router.push({ name: 'info' })">
+              <a-space @click="$router.push({ name: 'user-center' })">
                 <icon-user />
                 <span>
                   {{ '用户中心' }}
-                </span>
-              </a-space>
-            </a-doption>
-            <a-doption>
-              <a-space @click="$router.push({ name: 'setting' })">
-                <icon-settings />
-                <span>
-                  {{ '用户设置' }}
                 </span>
               </a-space>
             </a-doption>
@@ -103,6 +90,9 @@
   const userName = computed(() => {
     return userStore.name;
   });
+  const menuWidth = computed(() => {
+    return appStore.menuWidth;
+  });
   const theme = computed(() => {
     return appStore.theme;
   });
@@ -126,7 +116,6 @@
     const res = await userStore.switchRoles();
     Message.success(res as string);
   };
-  const toggleDrawerMenu = inject('toggleDrawerMenu');
 </script>
 
 <style scoped lang="less">
@@ -141,7 +130,6 @@
     display: flex;
     align-items: center;
     padding-left: 20px;
-    width: 220px;
   }
 
   .mid-side {

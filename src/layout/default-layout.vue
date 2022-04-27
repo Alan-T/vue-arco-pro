@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="layout" :class="{ mobile: appStore.hideMenu }">
+  <a-layout class="layout">
     <div v-if="navbar" class="layout-navbar">
       <NavBar>
         <TabBar v-if="appStore.tabBar" />
@@ -9,7 +9,6 @@
       <a-layout>
         <a-layout-sider
           v-if="renderMenu"
-          v-show="!hideMenu"
           class="layout-sider"
           breakpoint="xl"
           :collapsed="collapsed"
@@ -23,17 +22,6 @@
             <Menu />
           </div>
         </a-layout-sider>
-        <a-drawer
-          v-if="hideMenu"
-          :visible="drawerVisible"
-          placement="left"
-          :footer="false"
-          mask-closable
-          :closable="false"
-          @cancel="drawerCancel"
-        >
-          <Menu />
-        </a-drawer>
         <a-layout class="layout-content" :style="paddingStyle">
           <a-layout-content>
             <PageLayout />
@@ -65,7 +53,6 @@
   useResponsive(true);
   const navbar = computed(() => appStore.navbar);
   const renderMenu = computed(() => appStore.menu);
-  const hideMenu = computed(() => appStore.hideMenu);
   const footer = computed(() => appStore.footer);
   const menuWidth = computed(() => {
     return appStore.menuCollapse ? 48 : appStore.menuWidth;
@@ -75,7 +62,7 @@
   });
   const paddingStyle = computed(() => {
     const paddingLeft =
-      renderMenu.value && !hideMenu.value
+      renderMenu.value
         ? { paddingLeft: `${menuWidth.value}px` }
         : {};
     return { ...paddingLeft };

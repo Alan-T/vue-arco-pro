@@ -14,9 +14,7 @@ export default function useResponsive(immediate?: boolean) {
   const appStore = useAppStore();
   function resizeHandler() {
     if (!document.hidden) {
-      const isMobile = queryDevice();
-      appStore.toggleDevice(isMobile ? 'mobile' : 'desktop');
-      appStore.toggleMenu(isMobile);
+      appStore.toggleMenu(queryDevice());
     }
   }
   const debounceFn = useDebounceFn(resizeHandler, 100);

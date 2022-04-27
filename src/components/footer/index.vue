@@ -1,5 +1,5 @@
 <template>
-  <a-layout-footer class="footer">Alan biubiubiu</a-layout-footer>
+  <a-layout-footer class="footer">Alan @biubiubiu</a-layout-footer>
 </template>
 
 <script lang="ts" setup></script>
@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    height: 24px;
     color: var(--color-text-2);
     text-align: center;
   }

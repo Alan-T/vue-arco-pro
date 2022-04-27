@@ -14,8 +14,7 @@
       const router = useRouter();
       const collapsed = computed({
         get() {
-          if (appStore.device === 'desktop') return appStore.menuCollapse;
-          return false;
+          return appStore.menuCollapse;
         },
         set(value: boolean) {
           appStore.updateSettings({ menuCollapse: value });
@@ -86,8 +85,7 @@
         }
       }, true);
       const setCollapse = (val: boolean) => {
-        if (appStore.device === 'desktop')
-          appStore.updateSettings({ menuCollapse: val });
+        appStore.updateSettings({ menuCollapse: val });
       };
 
       const renderSubMenu = () => {
@@ -133,7 +131,7 @@
       return () => (
         <a-menu
           v-model:collapsed={collapsed.value}
-          show-collapse-button={appStore.device !== 'mobile'}
+          show-collapse-button
           auto-open={false}
           selected-keys={selectedKey.value}
           auto-open-selected={true}

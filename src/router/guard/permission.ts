@@ -41,6 +41,16 @@ export default function setupPermissionGuard(router: Router) {
                 path: '/',
                 redirect: 'workplace',
               },
+              {
+                path: 'user-center',
+                name: 'user-center',
+                component: () => import('@/views/user-center/index.vue'),
+                meta: {
+                  locale: '用户中心',
+                  requiresAuth: false,
+                  icon: 'user',
+                },
+              },
               ...formatRoute(useMenu.routeList),
             ],
           });
