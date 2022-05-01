@@ -69,9 +69,6 @@
         return travel(copyRouter, 0);
       });
 
-      // In this case only two levels of menus are available
-      // You can expand as needed
-
       const selectedKey = ref<string[]>([]);
       const goto = (item: RouteRecordRaw) => {
         router.push({

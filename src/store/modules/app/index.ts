@@ -28,6 +28,9 @@ const useAppStore = defineStore('app', {
         document.body.removeAttribute('arco-theme');
       }
     },
+    toggleMenu(value: boolean) {
+      this.hideMenu = value;
+    },
   },
 });
 

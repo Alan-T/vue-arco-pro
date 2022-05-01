@@ -57,10 +57,10 @@ export default function setupPermissionGuard(router: Router) {
           // 添加动态路由
           if (router.getRoutes().find((item) => item.name === to.name)) {
             next(to.fullPath);
-            crossroads();
           } else {
             crossroads();
           }
+          crossroads();
         } catch (error) {
           next({
             name: 'login',

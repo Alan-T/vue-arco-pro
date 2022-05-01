@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed, watch, provide } from 'vue';
+  import { computed, watch } from 'vue';
   import { useRouter, useRoute } from 'vue-router';
   import { useAppStore, useUserStore } from '@/store';
   import NavBar from '@/components/navbar/index.vue';
@@ -61,10 +61,9 @@
     return appStore.menuCollapse;
   });
   const paddingStyle = computed(() => {
-    const paddingLeft =
-      renderMenu.value
-        ? { paddingLeft: `${menuWidth.value}px` }
-        : {};
+    const paddingLeft = renderMenu.value
+      ? { paddingLeft: `${menuWidth.value}px` }
+      : {};
     return { ...paddingLeft };
   });
   const setCollapsed = (val: boolean) => {
@@ -74,16 +73,9 @@
     () => userStore.role,
     (roleValue) => {
       if (roleValue && !permission.accessRouter(route))
-        router.push({ name: 'notFound' });
+        router.push({ name: 'workplace' });
     }
   );
-  const drawerVisible = ref(false);
-  const drawerCancel = () => {
-    drawerVisible.value = false;
-  };
-  provide('toggleDrawerMenu', () => {
-    drawerVisible.value = !drawerVisible.value;
-  });
 </script>
 
 <style scoped lang="less">
