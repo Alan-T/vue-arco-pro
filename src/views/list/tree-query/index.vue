@@ -27,7 +27,7 @@
     .sider {
       width: 210px;
       height: 100%;
-      background-color: #ffffff;
+      background-color: var(--color-bg-2);
       border-radius: 4px;
       margin-right: 10px;
     }
@@ -40,15 +40,15 @@
       height: 100%;
       overflow: auto;
       .header {
-        background-color: #ffffff;
+        background-color: var(--color-bg-2);
         border-radius: 4px;
       }
       .content {
-        background-color: #ffffff;
+        background-color: var(--color-bg-2);
         border-radius: 4px;
       }
       .footer {
-        background-color: #ffffff;
+        background-color: var(--color-bg-2);
         border-radius: 4px;
       }
     }

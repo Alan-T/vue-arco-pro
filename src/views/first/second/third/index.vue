@@ -15,7 +15,7 @@
     .main {
       border-radius: 4px;
       height: 100%;
-      background-color: #ffffff;
+      background-color: var(--color-bg-2);
     }
   }
 </style>

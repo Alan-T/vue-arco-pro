@@ -24,15 +24,15 @@
     row-gap: 10px;
     height: 100%;
     .header {
-      background-color: #ffffff;
+      background-color: var(--color-bg-2);
       border-radius: 4px;
     }
     .content {
-      background-color: #ffffff;
+      background-color: var(--color-bg-2);
       border-radius: 4px;
     }
     .footer {
-      background-color: #ffffff;
+      background-color: var(--color-bg-2);
       border-radius: 4px;
     }
   }
