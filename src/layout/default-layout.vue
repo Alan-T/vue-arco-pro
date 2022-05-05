@@ -23,9 +23,9 @@
           </div>
         </a-layout-sider>
         <a-layout class="layout-content" :style="paddingStyle">
-          <a-layout-content>
+          <div class="layout-main">
             <PageLayout />
-          </a-layout-content>
+          </div>
           <Footer v-if="footer" />
         </a-layout>
       </a-layout>
@@ -141,8 +141,12 @@
 
   .layout-content {
     height: calc(100vh - 60px);
-    overflow-y: auto;
+    overflow-y: hidden;
     background-color: var(--color-fill-2);
     transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+  }
+  .layout-main {
+    overflow-y: auto;
+    height: calc(100vh - 84px);
   }
 </style>

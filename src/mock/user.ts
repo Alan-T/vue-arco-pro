@@ -55,22 +55,32 @@ setupMock({
             },
           },
           {
-            path: 'settings',
-            name: 'settings',
-            component: '/settings/index',
+            path: 'list',
+            name: 'list',
+            component: '/list/index',
             meta: {
-              locale: '设置中心',
+              locale: '列表页',
               requiresAuth: true,
               icon: 'icon-settings',
               order: 2,
             },
             children: [
               {
-                path: 'personal',
-                name: 'personal',
-                component: '/settings/personal/index',
+                path: 'base-query',
+                name: 'base-query',
+                component: '/list/base-query/index',
                 meta: {
-                  locale: '个人信息',
+                  locale: '基础查询',
+                  requiresAuth: true,
+                  roles: ['*'],
+                },
+              },
+              {
+                path: 'tree-query',
+                name: 'tree-query',
+                component: '/list/tree-query/index',
+                meta: {
+                  locale: '树级查询',
                   requiresAuth: true,
                   roles: ['*'],
                 },
@@ -78,42 +88,33 @@ setupMock({
             ],
           },
           {
-            path: 'system',
-            name: 'system',
-            component: '/system/index',
+            path: 'first',
+            name: 'first',
+            component: '/first/index',
             meta: {
-              locale: '系统设置',
+              locale: '一级导航',
               requiresAuth: true,
               icon: 'icon-settings',
               order: 3,
             },
             children: [
               {
-                path: 'user',
-                name: 'user',
-                component: '/system/user/index',
+                path: 'second',
+                name: 'second',
+                component: '/first/second/index',
                 meta: {
-                  locale: '用户信息',
+                  locale: '二级导航',
                   requiresAuth: true,
-                  roles: ['*'],
-                },
-              },
-              {
-                path: 'log',
-                name: 'log',
-                component: '/system/log/index',
-                meta: {
-                  locale: '日志',
-                  requiresAuth: true,
+                  icon: 'icon-settings',
                   roles: ['*'],
                 },
                 children: [
                   {
-                    path: 'apilog',
-                    name: 'apilog',
-                    component: '/system/log/api/index',
+                    path: 'third',
+                    name: 'third',
+                    component: '/first/second/third/index',
                     meta: {
-                      locale: 'api日志',
+                      locale: '三级导航',
                       requiresAuth: true,
                       roles: ['*'],
                     },
