@@ -1,15 +1,21 @@
 <template>
-  <div class="container"> apilog </div>
+  <div class="container"> <div class="main"> </div> </div>
 </template>
 
 <script lang="ts">
   export default {
-    name: 'Home',
+    name: 'Third',
   };
 </script>
 
 <style lang="less" scoped>
-  .container{
-      background-color: aquamarine;
+  .container {
+    padding: 16px 20px 0 20px;
+    height: 100%;
+    .main {
+      border-radius: 4px;
+      height: 100%;
+      background-color: #ffffff;
+    }
   }
 </style>

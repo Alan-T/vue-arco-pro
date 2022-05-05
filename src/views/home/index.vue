@@ -1,15 +1,5 @@
 <template>
-  <div class="container">
-    <div class="header">
-      <!-- <div style="height: 120px"> ces</div> -->
-    </div>
-    <div class="content">
-      <div style="height: 100%; overflow: auto">
-        <div style="height: 1200px"> ces </div>
-      </div>
-    </div>
-    <div class="footer"></div>
-  </div>
+  <div class="container"> <div class="main"> </div> </div>
 </template>
 
 <script lang="ts">
@@ -21,28 +11,11 @@
 <style lang="less" scoped>
   .container {
     padding: 16px 20px 0 20px;
-    display: grid;
-    grid-template-rows: minmax(60px, min-content) auto 60px;
-    row-gap: 10px;
-    // display: flex;
-    // flex-direction: column;
     height: 100%;
-    .header {
-      background-color: #ffffff;
+    .main {
       border-radius: 4px;
-      // min-height: 60px;
-    }
-    .content {
+      height: 100%;
       background-color: #ffffff;
-      border-radius: 4px;
-      // flex: 1;
-      // margin: 10px 0;
-      // height: 0;
-    }
-    .footer {
-      background-color: #ffffff;
-      border-radius: 4px;
-      // height: 60px;
     }
   }
 </style>
