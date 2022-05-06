@@ -18,7 +18,7 @@
 
 <style lang="less" scoped>
   .container {
-    padding: 16px 20px 0 20px;
+    padding: 16px 16px 0 16px;
     display: grid;
     grid-template-rows: minmax(min-content, min-content) auto 60px;
     row-gap: 10px;

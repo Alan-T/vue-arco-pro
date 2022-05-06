@@ -38,7 +38,7 @@
           >
             <img alt="avatar" :src="avatar" />
           </a-avatar>
-          {{ userName }}
+          <span class="userName">{{ userName }}</span>
           <template #content>
             <a-doption>
               <a-space @click="switchRoles">
@@ -145,6 +145,10 @@
       display: flex;
       align-items: center;
       padding: 0 10px;
+
+      .userName {
+        color: var(--color-text-1);
+      }
     }
 
     a {

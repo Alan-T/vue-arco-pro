@@ -10,7 +10,7 @@
 
 <style lang="less" scoped>
   .container {
-    padding: 16px 20px 0 20px;
+    padding: 16px 16px 0 16px;
     height: 100%;
     .main {
       border-radius: 4px;

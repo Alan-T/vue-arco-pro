@@ -21,7 +21,7 @@
 
 <style lang="less" scoped>
   .container {
-    padding: 16px 0px 0 20px;
+    padding: 16px 0px 0 16px;
     height: 100%;
     display: flex;
     .sider {
@@ -36,7 +36,7 @@
       display: grid;
       grid-template-rows: minmax(min-content, min-content) auto 60px;
       row-gap: 10px;
-      padding-right: 20px;
+      padding-right: 16px;
       height: 100%;
       overflow: auto;
       .header {

@@ -147,6 +147,7 @@
   }
   .layout-main {
     overflow-y: auto;
+    background-color: var(--color-fill-2);
     height: calc(100vh - 84px);
   }
 </style>
