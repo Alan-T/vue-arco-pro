@@ -1,6 +1,5 @@
 import type { Router, LocationQueryRaw } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
-
 import usePermission from '@/hooks/permission';
 import { useUserStore, useMemuStore } from '@/store';
 import { isLogin } from '@/utils/auth';
@@ -60,7 +59,6 @@ export default function setupPermissionGuard(router: Router) {
           } else {
             crossroads();
           }
-          crossroads();
         } catch (error) {
           next({
             name: 'login',
