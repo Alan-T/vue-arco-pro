@@ -3,9 +3,18 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
+import ViteComponent from 'unplugin-vue-components/vite';
+import { ArcoResolver } from 'unplugin-vue-components/resolvers';
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), svgLoader({ svgoConfig: {} })],
+  plugins: [
+    vue(),
+    vueJsx(),
+    svgLoader({ svgoConfig: {} }),
+    ViteComponent({
+      resolvers: [ArcoResolver({ importStyle: 'less' })],
+    }),
+  ],
   resolve: {
     alias: [
       {
@@ -30,9 +39,10 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         modifyVars: {
-          hack: `true; @import (reference) "${resolve(
+          'hack': `true; @import (reference) "${resolve(
             'src/assets/style/breakpoint.less'
           )}";`,
+          'arcoblue-6': '#f85959',
         },
         javascriptEnabled: true,
       },

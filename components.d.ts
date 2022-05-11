@@ -44,6 +44,12 @@ declare module 'vue' {
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     ATypographyParagraph: typeof import('@arco-design/web-vue')['TypographyParagraph']
     ATypographyTitle: typeof import('@arco-design/web-vue')['TypographyTitle']
+    Breadcrumb: typeof import('./src/components/breadcrumb/index.vue')['default']
+    Chart: typeof import('./src/components/chart/index.vue')['default']
+    Footer: typeof import('./src/components/footer/index.vue')['default']
+    Menu: typeof import('./src/components/menu/index.vue')['default']
+    Navbar: typeof import('./src/components/navbar/index.vue')['default']
+    TabBar: typeof import('./src/components/tab-bar/index.vue')['default']
   }
 }
 

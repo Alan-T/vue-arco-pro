@@ -60,8 +60,12 @@
     align-items: flex-end;
     height: 100%;
   }
+  :deep(.arco-tabs-tab) {
+    padding: 2px !important;
+  }
   :deep(.arco-tabs-tab-active) {
     font-weight: normal;
+    border-bottom: 2px solid rgb(var(--arcoblue-6));
   }
   :deep(.arco-tabs-tab-title:hover) {
     font-weight: normal;

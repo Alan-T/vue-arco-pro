@@ -22,7 +22,7 @@
 ## 🌈 使用
 
 ```bash
-$ npm install
+$ npm install --ignore-scripts
 
 $ npm run dev
 ```
