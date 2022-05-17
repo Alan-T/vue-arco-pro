@@ -6,6 +6,7 @@
       :body-style="{
         padding: '20px',
       }"
+      :bordered="false"
     >
       <template #title>
         {{ '内容类型占比' }}

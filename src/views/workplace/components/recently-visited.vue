@@ -4,6 +4,7 @@
     title="最近访问"
     :header-style="{ paddingBottom: '0' }"
     :body-style="{ paddingTop: '26px' }"
+    :bordered="false"
   >
     <div style="margin-bottom: -1rem">
       <a-row :gutter="8">

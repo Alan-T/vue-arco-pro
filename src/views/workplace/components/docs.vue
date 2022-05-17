@@ -5,6 +5,7 @@
     :header-style="{ paddingBottom: 0 }"
     :body-style="{ paddingTop: 0 }"
     style="height: 160px"
+    :bordered="false"
   >
     <template #extra>
       <a-link>{{ '查看更多' }}</a-link>

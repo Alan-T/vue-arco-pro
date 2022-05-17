@@ -7,6 +7,7 @@
         paddingTop: '20px',
       }"
       title="内容数据"
+      :bordered="false"
     >
       <template #extra>
         <a-link>{{ '查看更多' }}</a-link>
