@@ -7,10 +7,10 @@
       :bordered="false"
     >
       <template #title>
-        {{ '线上热门内容'}}
+        {{ '线上热门内容' }}
       </template>
       <template #extra>
-        <a-link>{{ '查看更多'}}</a-link>
+        <a-link>{{ '查看更多' }}</a-link>
       </template>
       <a-space direction="vertical" :size="10" fill>
         <a-radio-group

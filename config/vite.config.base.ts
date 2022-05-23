@@ -3,17 +3,14 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import svgLoader from 'vite-svg-loader';
-import ViteComponent from 'unplugin-vue-components/vite';
-import { ArcoResolver } from 'unplugin-vue-components/resolvers';
+import configArcoResolverPlugin from './plugin/arcoResolver';
 
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
     svgLoader({ svgoConfig: {} }),
-    ViteComponent({
-      resolvers: [ArcoResolver({ importStyle: 'less' })],
-    }),
+    configArcoResolverPlugin(),
   ],
   resolve: {
     alias: [
